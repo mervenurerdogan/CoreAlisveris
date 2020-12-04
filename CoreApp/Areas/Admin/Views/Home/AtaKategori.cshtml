@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<KategoriAtaModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Urun Kategori Ekle</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+    <form asp-action="AtaKategori" asp-controller="Home" asp-area="Admin" method="post">
+
+        @for (int i=0; i<Model.Count;i++)
+        {
+         @*Modelin countu kadar dönecek yani modele ne kadar kategori eklenirse o kadar dönecek*@
+
+        <div class="form-check">
+            @*Ceheckbox olacağı içn form-check yaptık*@
+            <input type="hidden" asp-for="@Model[i].KategoriID" />
+            <input type="hidden" asp-for="@Model[i].KategoriAd" />
+
+
+            <input type="checkbox" asp-for="@Model[i].Varmi" class="form-check-input" />
+            <label class="form-check-label">@Model[i].KategoriAd </label>
+        </div>
+
+    {
+
+            }
+
+        }
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Kaydet</button>
+    </div>
+ 
+
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Urun>
+
+@{
+    decimal toplamFiyat = 0;
+
+    if (Model != null)
+    {
+        toplamFiyat = Model.Sum(I => I.Fiyat);
+
+
+    }
+
+
+
+    //var fiyat = Model.Select(I => I.Fiyat).ToList();
+    //var toplamFiyat = fiyat.Sum();
+
+
+}
+
+@if (Model != null)
+{
+    <div>
+
+        <div class="card">
+            <div class="card-header">
+                Tutar Bilgileri
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">@toplamFiyat</p>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-warning">Alışverişe Devam Et</a>
+
+                <a asp-action="SepetBosalt" asp-controller="Home" asp-route-fiyat="@toplamFiyat" class="btn btn-primary">Satın Al</a>
+            </div>
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div class="card my-1 w-100">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/img/@item.Resim" class="card-img" alt="@item.UrunAd">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.UrunAd</h5>
+                            <p class="card-text">@item.Fiyat TL</p>
+                            <a asp-action="SepettenCıkar" asp-controller="Home" asp-route-id="@item.UrunID" class="btn btn-danger" >Sepetten Çıkar</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+}
+
+else
+{
+    <div class="text-center">
+
+        Sepetiniz de ürün bulunamadı.
+
+        <a asp-action="Index" asp-controller="Home" class="btn btn-warning">Alışverişe Geri dön</a>
+
+    </div>
+}
+

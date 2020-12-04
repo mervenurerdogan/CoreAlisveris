@@ -1,0 +1,20 @@
+﻿@model List<CoreApp.Entities.Urun>
+
+<table class="table tabel-sm table-bordered">
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+
+            <td>@item.UrunID</td>
+            <td>@item.UrunAd</td>
+            <td>@item.Fiyat</td>
+
+
+        </tr>
+
+    }
+
+
+</table>

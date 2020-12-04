@@ -1,0 +1,32 @@
+﻿@model List<Kategori>
+
+    <html>
+
+        <head>
+
+            <link href="~/content/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+        </head>
+
+        <body>
+            <div class="list-group">
+                <a asp-action="Index" asp-controller="Home" class="list-group-item list-group-item-action @(ViewBag.Kategorid==null?"active":"")">
+                    Tüm Kategoriler
+                    </a>
+                    @foreach (var kategori in Model)
+                    {
+
+                        <a asp-action="Index" asp-controller="Home" asp-route-kategoriId="@kategori.KategoriID" class="list-group-item list-group-item-action @(ViewBag.Kategorid?.ToString()==kategori.KategoriID.ToString()?"active":"")">
+                            @*Eğer viewbag ile gelen katagori ile eşitse active et değilse boş kalsın*@
+                            @kategori.KategoriAD
+                        </a>
+                    }
+
+
+
+            </div>
+
+        </body>
+
+    </html>
+

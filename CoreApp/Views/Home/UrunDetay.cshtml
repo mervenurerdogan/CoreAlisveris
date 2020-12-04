@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@model Urun
+
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link href="~/content/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">
+
+                <img src="/img/@Model.Resim" class="w-100 img-thumbnail  img-fluid" alt="@Model.UrunAd" />
+
+            </div>
+
+            <div class="col-md-9">
+               @*@ViewBag.Session*@
+                <div class="card">
+                    <h5 class="card-header">@Model.UrunAd</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.UrunAd</h5>
+                        <p class="card-text">
+                        <strong>Kategorileri :</strong> <getirKategoriAd urun-id="@Model.UrunID"></getirKategoriAd>
+                        <br />
+                        <strong>Fiyat:</strong> @Model.Fiyat</p>
+                        <a asp-action="SepeteEkle" asp-controller="Home" asp-route-id="@Model.UrunID"  class="btn btn-primary float-right ml-1">Sepete Ekle</a>
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-danger float-right">Geri Dön</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

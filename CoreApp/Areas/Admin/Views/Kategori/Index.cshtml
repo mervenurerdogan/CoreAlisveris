@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Kategori>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Admin Panel</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+    <link href="~/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <a asp-action="Ekle" asp-controller="Kategori" asp-area="Admin" class="btn btn-primary btn-sm my-2">Ekle</a>
+    <table class="table table-sm table-bordered table-hover mt-2">
+        <tr>
+            <th>Kategori ID</th>
+
+
+            <th>Kategori Ad</th>
+            
+            <th>Kategori Guncelle/Sil</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.KategoriID</td>
+
+                <td>@item.KategoriAD</td>
+            
+                <td>
+
+                    <a asp-action="Guncelle" asp-controller="Kategori" asp-area="Admin" asp-route-id="@item.KategoriID" class="btn btn-warning btn-sm">Güncelle</a>
+                    @*Urun id yi göre gitmek için asp-route data seçtik*@
+
+                    <a asp-action="Sil" asp-controller="Kategori" asp-area="Admin" asp-route-id="@item.KategoriID" class="btn btn-danger btn-sm">Sil</a>
+                    @*Urun id yi göre gitmek için asp-route data seçtik*@
+                </td>
+
+
+
+
+
+            </tr>
+
+        }
+
+
+    </table>
+
+</body>
+</html>
